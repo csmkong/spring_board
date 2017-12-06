@@ -163,4 +163,55 @@ public class BDao {
 			}
 		}
 	}
+	
+	public void modify(String bId, String bName, String bTitle, String bContent) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "UPDATE mvc_board SET bName = ?, bTitle = ?, bContent = ? WHERE bId = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, bName);
+			preparedStatement.setString(2, bTitle);
+			preparedStatement.setString(3, bContent);
+			preparedStatement.setInt(4, Integer.parseInt(bId));
+			System.out.println("!!!!"+bId+" , "+bName+ " , "+bTitle+" ,"+ bContent);
+			int rs = preparedStatement.executeUpdate();
+			
+		}catch(Exception ex) {
+			
+		}finally {
+			try {
+				if(connection != null) connection.close();
+				if(preparedStatement != null) preparedStatement.close();
+			}catch(Exception ex2) {
+				
+			}
+		}
+	}
+	
+	public void delete(String bId) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "DELETE mvc_board WHERE bId = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, Integer.parseInt(bId));
+			int rs = preparedStatement.executeUpdate();
+		}catch(Exception ex) {
+			try {
+				if(connection != null) connection.close();
+				if(preparedStatement != null) preparedStatement.close();
+			}catch(Exception ex2) {
+				
+			}
+		}
+	}
+	
+	public ArrayList<BDto> reply_view(String bId) {
+		return null;
+	}
 }

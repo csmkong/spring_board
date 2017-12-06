@@ -33,7 +33,7 @@
 		<textarea rows="10" name ="bContent">${content_view.bContent }</textarea>
 		</td>
 	</tr>
-	<tr><td colspan="2"><input type="submit" value="수정"/> &nbsp;&nbsp; <a href="list">목록 보기</a></td></tr>
+	<tr><td colspan="2"><input type="submit" value="수정"/> &nbsp;&nbsp; <a href="list">목록 보기</a>&nbsp;&nbsp;<a href="delete?bId=${content_view.bId }">삭제</a>&nbsp;&nbsp;<!-- <a href="reply_view?bId=${content_view.bId }">답볍</a> --></td></tr>
 	</form>
 </table>
 </body>

@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.ui.Model;
 
+import com.csmkong.myBoard.dao.BDao;
+
 public class BDeleteCommand implements BCommand {
 
 	@Override
@@ -15,7 +17,8 @@ public class BDeleteCommand implements BCommand {
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
 		String bId = request.getParameter("bId");
 		
-
+		BDao dao = new BDao();
+		dao.delete(bId);
 	}
 
 }

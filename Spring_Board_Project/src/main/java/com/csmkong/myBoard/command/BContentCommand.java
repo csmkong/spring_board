@@ -6,6 +6,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.ui.Model;
 
+import com.csmkong.myBoard.dao.BDao;
+import com.csmkong.myBoard.dto.BDto;
+
 public class BContentCommand implements BCommand {
 
 	@Override
@@ -15,6 +18,10 @@ public class BContentCommand implements BCommand {
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
 		String bId = request.getParameter("bId");
 		
+		BDao dao = new BDao();
+		BDto dto = dao.contentView(bId);
+		
+		model.addAttribute("content_view",dto);
 		
 
 	}
